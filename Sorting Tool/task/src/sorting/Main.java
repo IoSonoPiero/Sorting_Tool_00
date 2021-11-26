@@ -4,26 +4,21 @@ import java.security.InvalidParameterException;
 import java.util.*;
 
 public class Main {
-    static DataType dataType;
-
     public static void main(final String[] args) {
         if (args.length != 0 && args.length != 2) {
             throw new InvalidParameterException("Params error");
         }
-        if (args.length == 0) {
-            dataType = DataType.WORD;
-        } else {
+        if (args.length == 2) {
             switch (args[1]) {
                 case "long":
-                    dataType = DataType.LONG;
+                    acquireLong();
                     break;
                 case "line":
-                    dataType= DataType.LINE;
+                    acquireLine();
                     break;
                 case "word":
-                    dataType = DataType.WORD;
                 default:
-                    throw new InvalidParameterException("Params error");
+                    acquireWord();
             }
         }
         Scanner scanner = new Scanner(System.in);
@@ -39,6 +34,18 @@ public class Main {
         long maxNumber = arrayOfLong.get(totalNumber - 1);
         int totalOccurrences = countOccurrences(arrayOfLong, maxNumber);
         System.out.printf("\nThe greatest number: %d (%d time(s)).", maxNumber, totalOccurrences);
+    }
+
+    private static void acquireLong() {
+
+    }
+
+    private static void acquireLine() {
+
+    }
+
+    private static void acquireWord() {
+
     }
 
     private static int countOccurrences(ArrayList<Long> arrayOfLong, long maxNumber) {

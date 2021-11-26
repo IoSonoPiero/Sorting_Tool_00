@@ -1,0 +1,4 @@
+# Project exclude paths
+/.gradle/
+/Sorting Tool/task/out/
+/Sorting Tool/task/out/production/classes/
