@@ -26,12 +26,12 @@ public class Main {
         }
 
 
-        int totalNumber = arrayOfLong.size();
-        System.out.printf("Total numbers: %d.", totalNumber);
-        Collections.sort(arrayOfLong);
-        long maxNumber = arrayOfLong.get(totalNumber - 1);
-        int totalOccurrences = countOccurrences(arrayOfLong, maxNumber);
-        System.out.printf("\nThe greatest number: %d (%d time(s)).", maxNumber, totalOccurrences);
+//        int totalNumber = arrayOfLong.size();
+//        System.out.printf("Total numbers: %d.", totalNumber);
+//        Collections.sort(arrayOfLong);
+//        long maxNumber = arrayOfLong.get(totalNumber - 1);
+//        int totalOccurrences = countOccurrences(arrayOfLong, maxNumber);
+//        System.out.printf("\nThe greatest number: %d (%d time(s)).", maxNumber, totalOccurrences);
     }
 
     private static void acquireLong(ArrayList<Long> arrayOfLongs) {
@@ -46,18 +46,18 @@ public class Main {
     private static void acquireLine(ArrayList<String> arrayOfLines) {
         Scanner scanner = new Scanner(System.in);
 
-        while (scanner.hasNextLong()) {
-            long number = scanner.nextLong();
-            arrayOfLines.add(number);
+        while (scanner.hasNextLine()) {
+            String aLine = scanner.nextLine();
+            arrayOfLines.add(aLine);
         }
     }
 
     private static void acquireWord(ArrayList<String> arrayOfWords) {
         Scanner scanner = new Scanner(System.in);
 
-        while (scanner.hasNextLong()) {
-            long number = scanner.nextLong();
-            arrayOfWords.add(number);
+        while (scanner.hasNextLine()) {
+            String aLine = scanner.nextLine();
+            arrayOfWords.add(aLine);
         }
     }
 
