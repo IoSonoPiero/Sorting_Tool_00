@@ -11,23 +11,21 @@ public class Main {
         if (args.length == 2) {
             switch (args[1]) {
                 case "long":
-                    acquireLong();
+                    ArrayList<Long> arrayOfLongs = new ArrayList<>();
+                    acquireLong(arrayOfLongs);
                     break;
                 case "line":
-                    acquireLine();
+                    ArrayList<String> arrayOfLines = new ArrayList<>();
+                    acquireLine(arrayOfLines);
                     break;
                 case "word":
                 default:
-                    acquireWord();
+                    ArrayList<String> arrayOfWords = new ArrayList<>();
+                    acquireWord(arrayOfWords);
             }
         }
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<Long> arrayOfLong = new ArrayList<>();
 
-        while (scanner.hasNextLong()) {
-            long number = scanner.nextLong();
-            arrayOfLong.add(number);
-        }
+
         int totalNumber = arrayOfLong.size();
         System.out.printf("Total numbers: %d.", totalNumber);
         Collections.sort(arrayOfLong);
@@ -36,16 +34,31 @@ public class Main {
         System.out.printf("\nThe greatest number: %d (%d time(s)).", maxNumber, totalOccurrences);
     }
 
-    private static void acquireLong() {
+    private static void acquireLong(ArrayList<Long> arrayOfLongs) {
+        Scanner scanner = new Scanner(System.in);
 
+        while (scanner.hasNextLong()) {
+            long number = scanner.nextLong();
+            arrayOfLongs.add(number);
+        }
     }
 
-    private static void acquireLine() {
+    private static void acquireLine(ArrayList<String> arrayOfLines) {
+        Scanner scanner = new Scanner(System.in);
 
+        while (scanner.hasNextLong()) {
+            long number = scanner.nextLong();
+            arrayOfLines.add(number);
+        }
     }
 
-    private static void acquireWord() {
+    private static void acquireWord(ArrayList<String> arrayOfWords) {
+        Scanner scanner = new Scanner(System.in);
 
+        while (scanner.hasNextLong()) {
+            long number = scanner.nextLong();
+            arrayOfWords.add(number);
+        }
     }
 
     private static int countOccurrences(ArrayList<Long> arrayOfLong, long maxNumber) {
