@@ -41,6 +41,10 @@ public class Main {
             long number = scanner.nextLong();
             arrayOfLongs.add(number);
         }
+
+        for(long aLong: arrayOfLongs) {
+            System.out.println(aLong);
+        }
     }
 
     private static void acquireLine(ArrayList<String> arrayOfLines) {
@@ -50,6 +54,9 @@ public class Main {
             String aLine = scanner.nextLine();
             arrayOfLines.add(aLine);
         }
+        for(String aLine: arrayOfLines) {
+            System.out.println(aLine);
+        }
     }
 
     private static void acquireWord(ArrayList<String> arrayOfWords) {
@@ -57,7 +64,13 @@ public class Main {
 
         while (scanner.hasNextLine()) {
             String aLine = scanner.nextLine();
-            arrayOfWords.add(aLine);
+            String[] words = aLine.split("\\s+");
+            for (String word :words) {
+                arrayOfWords.add(word);
+            }
+            for(String aWord: arrayOfWords) {
+                System.out.println(aWord);
+            }
         }
     }
 
