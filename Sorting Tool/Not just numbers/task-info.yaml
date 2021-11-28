@@ -415,9 +415,6 @@ files:
         return CheckResult(true)
     }
   learner_created: false
-- name: src/sorting/DataType.java
-  visible: true
-  learner_created: true
-feedback_link: https://hyperskill.org/projects/45/stages/240/implement#comment
+feedback_link: https://hyperskill.org/learn/step/5382#comment
 status: Unchecked
 record: -1

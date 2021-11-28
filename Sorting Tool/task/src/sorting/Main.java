@@ -5,45 +5,64 @@ import java.util.*;
 
 public class Main {
     public static void main(final String[] args) {
-        if (args.length != 0 && args.length != 2) {
-            throw new InvalidParameterException("Params error");
-        }
-        if (args.length == 2) {
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        ArrayList<Long> longArrayList = new ArrayList<>();
+
+        if (args.length == 0) {
+            acquireWords(stringArrayList);
+            sortWords(stringArrayList);
+            printSummaryWords(stringArrayList);
+        } else if (args.length == 2) {
             switch (args[1]) {
                 case "long":
-                    ArrayList<Long> arrayOfLongs = new ArrayList<>();
-                    acquireLong(arrayOfLongs);
+                    acquireLongs(longArrayList);
+                    sortLongs(longArrayList);
+                    printSummaryLongs(longArrayList);
                     break;
                 case "line":
-                    ArrayList<String> arrayOfLines = new ArrayList<>();
-                    acquireLine(arrayOfLines);
+                    acquireLine(stringArrayList);
+                    sortLines(stringArrayList);
+                    printSummaryLines(stringArrayList);
                     break;
-                case "word":
-                default:
-                    ArrayList<String> arrayOfWords = new ArrayList<>();
-                    acquireWord(arrayOfWords);
             }
+        } else {
+            throw new InvalidParameterException("Invalid Parameter Exception");
         }
 
 
-//        int totalNumber = arrayOfLong.size();
-//        System.out.printf("Total numbers: %d.", totalNumber);
 //        Collections.sort(arrayOfLong);
 //        long maxNumber = arrayOfLong.get(totalNumber - 1);
 //        int totalOccurrences = countOccurrences(arrayOfLong, maxNumber);
 //        System.out.printf("\nThe greatest number: %d (%d time(s)).", maxNumber, totalOccurrences);
     }
 
-    private static void acquireLong(ArrayList<Long> arrayOfLongs) {
+    private static void printSummaryWords(ArrayList<String> stringArrayList) {
+    }
+
+    private static void printSummaryLines(ArrayList<String> stringArrayList) {
+    }
+
+    private static void printSummaryLongs(ArrayList<Long> longArrayList) {
+    }
+
+    private static void sortLongs(ArrayList<Long> longArrayList) {
+
+    }
+
+    private static void sortLines(ArrayList<String> stringArrayList) {
+
+    }
+
+    private static void sortWords(ArrayList<String> stringArrayList) {
+
+    }
+
+    private static void acquireLongs(ArrayList<Long> arrayOfLongs) {
         Scanner scanner = new Scanner(System.in);
 
         while (scanner.hasNextLong()) {
             long number = scanner.nextLong();
             arrayOfLongs.add(number);
-        }
-
-        for(long aLong: arrayOfLongs) {
-            System.out.println(aLong);
         }
     }
 
@@ -54,22 +73,16 @@ public class Main {
             String aLine = scanner.nextLine();
             arrayOfLines.add(aLine);
         }
-        for(String aLine: arrayOfLines) {
-            System.out.println(aLine);
-        }
     }
 
-    private static void acquireWord(ArrayList<String> arrayOfWords) {
+    private static void acquireWords(ArrayList<String> arrayOfWords) {
         Scanner scanner = new Scanner(System.in);
 
         while (scanner.hasNextLine()) {
             String aLine = scanner.nextLine();
             String[] words = aLine.split("\\s+");
-            for (String word :words) {
+            for (String word : words) {
                 arrayOfWords.add(word);
-            }
-            for(String aWord: arrayOfWords) {
-                System.out.println(aWord);
             }
         }
     }
