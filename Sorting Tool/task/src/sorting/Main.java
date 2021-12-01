@@ -47,7 +47,7 @@ public class Main {
 
         long maxNumber = longArrayList.get(longArrayList.size() - 1);
 
-        int totalOccurrences = countOccurrences(longArrayList, maxNumber);
+        int totalOccurrences = countLongOccurrences(longArrayList, maxNumber);
 
         System.out.printf("\nTotal numbers: %d.", totalNumber);
         System.out.printf("\nThe greatest number: %d (%d time(s), %d%%).", maxNumber, totalOccurrences, 100 / totalOccurrences);
@@ -68,8 +68,10 @@ public class Main {
         int totalNumber = stringArrayList.size();
         String maxString = stringArrayList.get(stringArrayList.size() - 1);
 
+        int totalOccurrences = countOccurrences(stringArrayList, maxString);
+        float percentage = (float) totalOccurrences / totalNumber * 100;
         System.out.printf("\nTotal numbers: %d.", totalNumber);
-        System.out.printf("\nThe longest line:\n%s\n(%d time(s), %d%%).", maxString, totalNumber, 100 / totalNumber);
+        System.out.printf("\nThe longest line:\n%s\n(%d time(s), %.0f%%).", maxString, totalOccurrences, percentage);
     }
 
     private static void acquireWords(ArrayList<String> arrayOfWords) {
@@ -88,16 +90,26 @@ public class Main {
         int totalNumber = stringArrayList.size();
         String maxString = stringArrayList.get(stringArrayList.size() - 1);
 
+        int totalOccurrences = countOccurrences(stringArrayList, maxString);
+        float percentage = (float) totalOccurrences / totalNumber * 100;
         System.out.printf("\nTotal words: %d.", totalNumber);
-        System.out.printf("\nThe longest word:\n%s\n(%d time(s), %d%%).", maxString, totalNumber, 100 / totalNumber);
+        System.out.printf("\nThe longest word: %s (%d time(s), %.0f%%).", maxString, totalOccurrences, percentage);
     }
 
-
-
-    private static int countOccurrences(ArrayList<Long> arrayOfLong, long maxNumber) {
+    private static int countLongOccurrences(ArrayList<Long> arrayOfLong, long maxNumber) {
         int counter = 0;
         for (long i : arrayOfLong) {
             if (maxNumber == i) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    private static int countOccurrences(ArrayList<String> stringArrayList, String maxString) {
+        int counter = 0;
+        for (String aWord : stringArrayList) {
+            if (maxString.equals(aWord)) {
                 counter++;
             }
         }
