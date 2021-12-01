@@ -12,6 +12,9 @@
           <option name="noStdlib" value="true" />
           <option name="noReflect" value="true" />
           <option name="moduleName" value="Sorting_Tool-task" />
+          <option name="friendPaths">
+            <array />
+          </option>
           <option name="languageVersion" value="1.5" />
           <option name="apiVersion" value="1.5" />
           <option name="pluginOptions">

@@ -10,51 +10,25 @@ public class Main {
 
         if (args.length == 0) {
             acquireWords(stringArrayList);
-            sortWords(stringArrayList);
-            printSummaryWords(stringArrayList);
+            processWords(stringArrayList);
         } else if (args.length == 2) {
             switch (args[1]) {
                 case "long":
                     acquireLongs(longArrayList);
-                    sortLongs(longArrayList);
-                    printSummaryLongs(longArrayList);
+                    processLongs(longArrayList);
                     break;
                 case "line":
-                    acquireLine(stringArrayList);
-                    sortLines(stringArrayList);
-                    printSummaryLines(stringArrayList);
+                    acquireLines(stringArrayList);
+                    processLines(stringArrayList);
+                    break;
+                case "word":
+                    acquireWords(stringArrayList);
+                    processWords(stringArrayList);
                     break;
             }
         } else {
             throw new InvalidParameterException("Invalid Parameter Exception");
         }
-
-
-//        Collections.sort(arrayOfLong);
-//        long maxNumber = arrayOfLong.get(totalNumber - 1);
-//        int totalOccurrences = countOccurrences(arrayOfLong, maxNumber);
-//        System.out.printf("\nThe greatest number: %d (%d time(s)).", maxNumber, totalOccurrences);
-    }
-
-    private static void printSummaryWords(ArrayList<String> stringArrayList) {
-    }
-
-    private static void printSummaryLines(ArrayList<String> stringArrayList) {
-    }
-
-    private static void printSummaryLongs(ArrayList<Long> longArrayList) {
-    }
-
-    private static void sortLongs(ArrayList<Long> longArrayList) {
-
-    }
-
-    private static void sortLines(ArrayList<String> stringArrayList) {
-
-    }
-
-    private static void sortWords(ArrayList<String> stringArrayList) {
-
     }
 
     private static void acquireLongs(ArrayList<Long> arrayOfLongs) {
@@ -66,7 +40,20 @@ public class Main {
         }
     }
 
-    private static void acquireLine(ArrayList<String> arrayOfLines) {
+    private static void processLongs(ArrayList<Long> longArrayList) {
+        Collections.sort(longArrayList);
+
+        int totalNumber = longArrayList.size();
+
+        long maxNumber = longArrayList.get(longArrayList.size() - 1);
+
+        int totalOccurrences = countOccurrences(longArrayList, maxNumber);
+
+        System.out.printf("\nTotal numbers: %d.", totalNumber);
+        System.out.printf("\nThe greatest number: %d (%d time(s), %d%%).", maxNumber, totalOccurrences, 100 / totalOccurrences);
+    }
+
+    private static void acquireLines(ArrayList<String> arrayOfLines) {
         Scanner scanner = new Scanner(System.in);
 
         while (scanner.hasNextLine()) {
@@ -75,17 +62,37 @@ public class Main {
         }
     }
 
+    private static void processLines(ArrayList<String> stringArrayList) {
+        stringArrayList.sort(Comparator.comparing(String::length));
+
+        int totalNumber = stringArrayList.size();
+        String maxString = stringArrayList.get(stringArrayList.size() - 1);
+
+        System.out.printf("\nTotal numbers: %d.", totalNumber);
+        System.out.printf("\nThe longest line:\n%s\n(%d time(s), %d%%).", maxString, totalNumber, 100 / totalNumber);
+    }
+
     private static void acquireWords(ArrayList<String> arrayOfWords) {
         Scanner scanner = new Scanner(System.in);
 
         while (scanner.hasNextLine()) {
             String aLine = scanner.nextLine();
             String[] words = aLine.split("\\s+");
-            for (String word : words) {
-                arrayOfWords.add(word);
-            }
+            Collections.addAll(arrayOfWords, words);
         }
     }
+
+    private static void processWords(ArrayList<String> stringArrayList) {
+        stringArrayList.sort(Comparator.comparing(String::length));
+
+        int totalNumber = stringArrayList.size();
+        String maxString = stringArrayList.get(stringArrayList.size() - 1);
+
+        System.out.printf("\nTotal words: %d.", totalNumber);
+        System.out.printf("\nThe longest word:\n%s\n(%d time(s), %d%%).", maxString, totalNumber, 100 / totalNumber);
+    }
+
+
 
     private static int countOccurrences(ArrayList<Long> arrayOfLong, long maxNumber) {
         int counter = 0;
